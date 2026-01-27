@@ -1,0 +1,31 @@
+# Adult Waifu Card Battler
+
+A turn-based card battler in Godot 4 where players collect waifu cards and fight AI opponents in a story-driven adult campaign featuring mature themes like violence and political assassinations.
+
+## Features
+- Deck building and customization (core to gameplay)
+- Turn-based battles with waifu summons, effects, and AI opponents
+- Story integration with Dialogic (branching paths, player choices alter story, leading to demon invasion climax)
+- Waifu romance: Affection levels, gifting (vendors/loot), select up to 3 for conditional buffs
+- Exploration: Many maps and dungeons with varying lengths and rewards
+- Factions: Multiple factions vying for power; player can help or hinder
+- Multiple endings based on choices, allies, waifu survival, faction standings (e.g. save world with losses, bad ending where demons win)
+- Pixel sprites for characters/effects, hand-drawn cards/maps/backgrounds
+- Save/load system for decks, progress, inventory, story choices
+- Mobile support planned but low priority (Android/iOS TOS concerns)
+
+## Requirements
+- Godot 4.6 (download from godotengine.org)
+- Addons: Dialogic 2 (in addons/ folder)
+
+## How to Run
+1. Clone the repo: `git clone https://github.com/rekore/adult-waifu-card-battler`
+2. Open Godot editor → Import → select project.godot
+3. Click Play (or F5) — starts from main scene (TBD, currently placeholder)
+
+## Development Setup
+- See docs/project-bible.md for architecture and roadmap
+- Tests in tests/ (gdUnit4)
+
+## License
+MIT – see LICENSE file
