@@ -5,7 +5,7 @@ Engine: Godot 4.6 (locked)
 Main Goals: Turn-based card battler with adult story, waifu romance, branching paths to demon invasion ending
 
 Current Big 3 (do not deviate unless I explicitly say to change them):
-1. Project Bible (key summary – full at https://raw.githubusercontent.com/rekore/waifu-card-game/refs/heads/main/Project-Bible):
+1. Project Bible (key summary – full at https://raw.githubusercontent.com/rekore/waifu-card-game/refs/heads/Main/Project-Bible):
    - Genre: Adult turn-based card battler with mature themes (violence, assassinations)
    - Core Loop: Explore → build deck → select 3 waifu buffs → battle → loot/story
    - Turns: Player first then resolve, enemy then resolve
@@ -16,7 +16,7 @@ Current Big 3 (do not deviate unless I explicitly say to change them):
    - Save: JSON for decks/inventory/story flags/factions
 
 2. Folder Structure (current):  
-   https://raw.githubusercontent.com/rekore/waifu-card-game/refs/heads/main/Folder-Structure 
+   https://raw.githubusercontent.com/rekore/waifu-card-game/refs/heads/Main/file-structure 
    
 
 3. Key Rules / Conventions (always follow):
