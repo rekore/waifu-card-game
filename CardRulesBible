@@ -1,0 +1,139 @@
+GAME OVERVIEW & VISION
+- Genre & Style: Roguelike deckbuilder RPG with persistent progression across finite themed dungeons. Short, replayable runs emphasize experimentation, sequencing depth, and multi-element hybrid synergies.
+- Core Loop:
+  1. Enter a themed dungeon (25–35 nodes).
+  2. Navigate map → fight enemies → gain rewards (cards, gold, relics).
+  3. Use Cascade Meter to chain ramps, pivot elements (Shift/Transmute/Dual), and unleash Finishers.
+  4. Die or win → meta progression (deck thins/adds, relics, gold spent in hub).
+- Win/Loss Conditions:
+  - Run Win: Defeat the final Act 3 boss of the dungeon.
+  - Run Loss: Player HP ≤ 0 (permadeath: lose 30% gold + run-only cards; deck/relics persist).
+  - Combat Win: All enemies HP ≤ 0.
+  - Combat Loss: Player HP ≤ 0 (rare mid-run escape relics possible).
+- Player Experience Pillars:
+  - Dopamine chaining (ramp → pivot → burst).
+  - Joyful experimentation (no decay → bank freely, try hybrids via Duals/Shifts).
+  - Tactical tension (spend points now or hold for Finisher? Match for full power or mismatch bailout?).
+  - Mastery curve: Early mono safe → late multi-god runs.
+- Run Length & Pacing: ~60 min total. Fights: 3–4 min (8–20 turns). No Cascade decay extends viable banking, balanced by enemy drains and point caps.
+
+CORE STATS & RESOURCES
+- HP: Player starts 80 (+relic bonuses). No natural regen outside cards/effects.
+- Energy: +3 at turn start (meta upgrades to 7 max). Regenerates fully each turn. Spent on cards only.
+- Hand: Draw 5 at turn start (max hand size 10). Excess draw discards randomly.
+- Draw/Discard/Exhaust Piles: Standard reshuffle when draw empty. Run-only cards exhaust (removed post-run). Keyword "Exhaust": Card removed from deck after play (for the run).
+- Block: Temporary HP buffer. Decays fully at end of player turn (unless relic/effect prevents).
+- Cascade Meter:
+  - Current Element (Fire/Frost/Storm/Stone/Void, or Neutral at 0).
+  - Points: 0–7 (visual: 7 pips/orb glow).
+  - Starts at 0 Neutral each combat.
+  - No end-of-turn decay → bank indefinitely for experimentation.
+  - Gain: +1 per Chain (cap 7).
+  - Spend: Via Transmute/Shift/Dual/Finisher.
+  - Reset: Finisher consumes all → back to 0 Neutral.
+- Deck Limits: Non-Legendary cards max 4 copies. Legendary cards max 1 copy per deck.
+
+COMBAT FLOW (STEP-BY-STEP)
+1. Combat Start:
+   - Player HP full (carryover from prior fights if relic allows).
+   - Cascade: 0 Neutral.
+   - Draw 5 cards.
+   - Gain 3 Energy.
+   - Enemy intents preview (next 2 turns visible).
+2. Player Turn:
+   - Play any number of cards (energy permitting).
+   - Sequence matters: Effects resolve immediately (e.g., Draw/Search mid-turn).
+   - Target selection: Single enemy default; AoE hits all.
+   - Keywords: Exhaust triggers post-play.
+3. End Player Turn:
+   - Discard remaining hand.
+   - Block → 0 (unless prevented).
+   - No Cascade decay.
+   - Apply player statuses (Regen heals, Poison dmg).
+4. Enemy Turn(s):
+   - All enemies act (simultaneous if multiple).
+   - Resolve intents (damage, buffs, debuffs).
+   - Apply enemy statuses.
+   - Some enemies: "Cascade Drain X if player ≥L5" or "Echo last player element (apply minor Burn/Chill)".
+5. Next Turn: Player draws 5 (or remaining if <5), +3 Energy, repeat.
+6. Combat End: Rewards screen (gold, run-relics, heal/upgrade chances, boss packs).
+
+ELEMENTS & SYNERGY WHEEL
+5 Elements (pentagon wheel – adjacent = good pairs):
+- Fire: Aggro/DoT Ramp – High raw dmg, AoE, Pierce | Weak to control | Burn, Vulnerable
+- Frost: Tank/Control – Massive Block/Regen, debuff lock | Slow ramp | Chill, Slow, Frail
+- Storm: Cycle/Multi-Hit – Draw/Energy, multi-target shred | Inconsistent | Shock, Overload
+- Stone: Debuff/Wall – Permanent debuffs, unbreakable Block | Low direct dmg | Weak, Frail, Crumble
+- Void: Sustain/Steal – Steal buffs/intents, Poison/Regen | Ramp delay | Poison, Corrode, Disarm
+
+Good Pairs (wheel amps on Transmute/Shift):
+- Fire → Storm: +50% any +2 hits | +1 pt refund
+- Frost → Stone: +10 Block + Weak 2 | +1 pt
+- Storm → Void: +Draw 2 +1 Energy | +1 pt
+- Stone → Fire: Pierce + Burn AoE | +1 pt
+- Void → Frost: +Poison 3 + Slow 1 | +1 pt
+
+STATUS EFFECTS – FULL MECHANICS (28 Total)
+General Rules:
+- Applied immediately on play/hit.
+- Stacking: Additive for numbers (Burn 3 = 9 dmg/t + lose Block). Duration refreshes or adds.
+- Duration: Turns remaining (player statuses tick at player EOT; enemy at enemy turn end).
+- Cap: Most stack to reasonable limits.
+- Interactions: Fire cleanses Chill; Void Corrode amplifies Vulnerable; Overload before player dmg; Echo repeats last applied effect.
+
+Offense:
+- Vulnerable: +50% dmg taken (additive stacks)
+- Weak: -25% dmg dealt (additive stacks)
+- Poison: 2 dmg/turn (additive stacks)
+- Burn: 3 dmg/turn + lose all current Block this turn (additive dmg, Block loss per tick)
+- Chill: -1 Energy at next turn start (stacks reduce more; min 0)
+- Corrode: +25% Vulnerable potency per stack (multiplicative with Vuln stacks)
+- Crumble: -1 max HP/turn (permanent until combat end; rare)
+
+Defense:
+- Block: Absorbs dmg (additive; decays EOT unless prevented)
+- Strength: +25% dmg dealt (additive; rare player source)
+- Dexterity: +25% Block gained from cards (additive)
+- Ward: +50% Block this turn only (instant, non-stacking)
+
+Control:
+- Stun: Skip full next turn (non-stacking; overrides Slow)
+- Slow: -1 action (play fewer cards or skip minor action; stacks reduce more)
+- Disarm: No attack/dmg cards playable next turn (non-stacking)
+- Shock: Skip 1 random action/card play (stacks increase skips)
+- Overload: +25% self-dmg taken next turn (additive; Storm risk)
+- Echo: Repeat last applied effect next turn (non-stacking; copies potency)
+
+Sustain:
+- Regen: Heal X/turn (additive; ticks at EOT)
+
+CASCADE ACTIONS – DETAILED LOGIC
+- Chain: Must match current element. Effect × mult → +1 pt.
+- Dual (Chain variant): Match → normal Chain. Optional: Spend exactly 2 pts → swap to fixed new element + bonus burst/utility.
+- Transmute: Spend X≥3 pts + Energy. Burst ×X → refund Y pts in chosen element. Good pair → +50% burst & +1 pt refund.
+- Shift: Spend 1–2 pts + low/no Energy. Mini-burst × spent + flavor + refund 1–3 in chosen.
+- Finisher: 0–3 Energy + consume all current pts (≥4 req). Match = full ×pts; mismatch = half. Reset to 0 Neutral.
+
+ENEMY & FIGHT DESIGN
+- Scaling: Normal ~50 HP, Elite ~120, Boss 200+ (phases at 50%/25%).
+- Intents: 2-turn preview icons + text (e.g., "20 dmg + Poison 2", "Gain Strength 3", "Drain 3 Cascade pts if ≥L4").
+- AI Priorities: Target lowest Block first. Echo mechanic: Last player element → apply minor version.
+- Special: Some elites/bosses "Punish bank" (extra dmg if Cascade ≥5).
+
+RUN & META PROGRESSION
+- Dungeons: Themed, finite (25–35 nodes).
+- Node Breakdown: ~60% fights, 20% shops, 15% rests/events, 5% elites.
+- Map: Branching web, 3 Acts, bosses every ~10 nodes.
+- Permadeath: Lose 30% gold + run-only cards.
+- Rewards: Normal/Elite fights: Gold ~15 + single-run relics + chance to heal/upgrade a deck card (for the run). Boss fights: Packs (pick 1 of 3 cards) + above.
+- Persistent: Deck (12→50+). Deck Limits: Max 4 copies non-Legendary; max 1 copy Legendary.
+- Heroes: 4 starters (e.g., Swapper: Transmutes 0E). Shared gold, unique packs/relics.
+- Shop (Meta Hub, outside dungeons): Spend gold on packs (many types/contents), Elemental Pack 150g, Transmute Pack 200g, Relic Slot 250g, +1 Energy 400g, Thin deck 75g, etc.
+- Legendary Cards: Unlocked via achievements, story progression, milestones (e.g., clear 10 dungeons). Not in packs/shops.
+- Milestones: Clear X dungeons → new packs/heroes/Legendaries. Prestige: Reset for multipliers.
+
+BALANCE & EDGE CASES
+- No decay: Enables long banks → counter with enemy drains, cap 7, high-L risks.
+- Multi-element viability: Duals/Shifts ~30–40% cards → target 20–30% winrate boost for hybrids.
+- Edge: L0 Neutral → only neutral cards/Shift to start. Finisher mismatch at L7 still strong bailout. Exhaust thins deck dynamically.
+- UI must show: Exact previews (e.g., "Finisher: 6 pts Fire match → 72 dmg" / "Mismatch → 36").

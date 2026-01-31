@@ -1,0 +1,45 @@
+BALANCE PHILOSOPHY & POINT SYSTEM (PP)
+- Dmg: 1 PP per 3 dmg (single); 1 PP per 2 dmg (AoE).
+- Block: 1 PP per 4 Block.
+- Draw: 1 PP per 1 card drawn/searched/tutored.
+- Discard: 0.5 PP (utility cost).
+- Status: 1 PP minor (Poison1/Chill1); 2 PP major (Stun1/Regen2); +0.5 PP per extra turn.
+- Utility: 1 PP minor (Slow1); 2 PP steal; 3 PP skip/AoE control.
+- Synergy/Wheel Amp: +2 PP (rare+).
+- Multi-Hit/Pierce: +0.5 PP per extra.
+- Sustain: 1 PP per 2 Regen/heal.
+- Mod per L/Pt: +0.5 PP.
+- Exhaust Keyword: -1 Budget (anti-recycle penalty).
+- Budget Formula: [(Energy Cost × 3) + (Min Cascade Spend × 2) + Type Adj] × Rarity Mult - Penalties (e.g., Exhaust -1).
+  - Type Adj: Chain +2; Dual +1; Transmute/Shift -1; Finisher +4.
+  - Rarity Mult: Common ×1; Rare ×1.2; Epic ×1.5; Legendary ×2.5 (stronger for cost; ignore minor caps).
+  - Cap: Total PP ≤ Budget (round down).
+
+RARITY GUIDELINES
+- Common: Basic, efficient, no amps. Max 4/deck.
+- Rare: +1 mod (e.g., +status/L). Max 4/deck.
+- Epic: Wheel synergies, hybrids. Max 4/deck.
+- Legendary: Unique/powerful (e.g., auto-synergy, high util). Max 1/deck; achievement/story rewards only.
+
+TYPE-SPECIFIC BUDGETS & RULES
+Type          | Base Budget Formula              | Energy | Cascade Rules                  | PP Adjustments & Notes
+--------------|----------------------------------|--------|--------------------------------|----------------------------
+Chain         | (E × 3) + 2                      | 0–2    | Match: ×L mult, +1 pt          | +0.5 PP mod/L. Budget ≤15–25 (Leg ×2.5=37–62). Draw/Discard ok.
+Dual          | (E × 3) + 1                      | 0–2    | Match: ×L +1 pt; Alt: Spend 2 → Swap + burst | Burst ≤8 PP. Wheel swaps +2 PP epic+. Budget ≤20–30 (Leg 50–75).
+Transmute     | (E × 3) + (Min3 × 2) -1          | 0–3    | Spend X≥3 → Burst ×X, Refund 2–5 | 45% util skew. Budget ≤25–40 (Leg 62–100).
+Shift         | (E × 3) + (Min1 × 2) -1          | 0–1    | Spend 1–2 → Mini-burst ×spent, Refund 1–3 | Quick pivots. Budget ≤10–20 (Leg 25–50).
+Finisher      | (E × 3) + 4                      | 0–3    | Consume all ≥4 → ×pts (match full/mismatch half) | 50% dmg/util. Budget ≤50–80 (Leg 125–200). Search/Draw exhaust viable.
+
+HOW TO CALCULATE & GENERATE A CARD
+1. Choose Type/Rarity/Element (e.g., Epic Transmute, Storm).
+2. Set Costs/Reqs (e.g., 2E, Min3, Refund3, Exhaust).
+3. Calc Budget: (2×3) + (3×2) -1 -1(Exhaust) = 10 ×1.5(Epic)=15 PP.
+4. Build Effects: E.g., Draw2 (2 PP) + Shock1 AoE (3 PP) + 4 dmg×spent (4 PP)=9 PP. Fits—add mod for rarity.
+5. Check: No overlap (e.g., common version weaker/no AoE). Legendary: Pump to 25 PP same costs.
+6. Keywords: Draw (top X/add to hand); Search (tutor specific to hand/top); Discard (random/targeted); Exhaust (post-play remove).
+
+BALANCE MANDATES
+- 1/3 AoE, 1/4 control, 1/5 sustain.
+- Multi-Viability: 30–40% Duals/Shifts/Draw.
+- Power Curve: L3=15–30, L5=40–70, L7=70–120 (Leg +50%).
+- Expansion: Plug into formula; playtest PP tweaks.
