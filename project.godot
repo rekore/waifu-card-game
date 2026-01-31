@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="waifu card game"
+run/main_scene="uid://clfqropn7nevs"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
+FontScaler="*uid://c5s5usc6enx3o"
 
 [dialogic]
 
@@ -47,6 +49,7 @@ save/encryption_on_exports_only=true
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+window/stretch/scale=2.99
 window/stretch/scale_mode="integer"
 
 [editor]

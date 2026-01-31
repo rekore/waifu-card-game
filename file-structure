@@ -1,45 +1,47 @@
 adult-waifu-card-battler/
 ├── addons/
-│   └── dialogic/                    # Story/dialogue plugin
+│ └── dialogic/                    # Story/dialogue plugin
 ├── assets/
-│   ├── art/
-│   │   ├── cards/                   # Hand-drawn card images
-│   │   ├── maps/                    # Hand-drawn backgrounds for maps/battles
-│   │   ├── characters/              # Pixel sprites for waifus/enemies
-│   │   └── ui/                      # Buttons, frames, icons
-│   ├── audio/                       # Music, SFX
-│   └── fonts/                       # Custom fonts for UI/cards
+│ ├── art/
+│ │ ├── cards/                     # Hand-drawn card images
+│ │ ├── maps/                      # Hand-drawn backgrounds for maps/battles
+│ │ ├── characters/                # Pixel sprites for waifus/enemies
+│ │ └── ui/                        # Buttons, frames, icons (9-slice button PNGs go here)
+│ ├── audio/                       # Music, SFX
+│ └── fonts/                       # Custom fonts for UI/cards (your MSDF .ttf files)
 ├── scenes/
-│   ├── battle/
-│   │   └── Battle.tscn              # Main battle scene
-│   ├── menus/
-│   │   └── DeckBuilder.tscn         # Deck editing UI
-│   │   └── InventoryUI.tscn         # Inventory viewing/using UI
-│   ├── overworld/
-│   │   └── Map.tscn                 # Node-based map with encounters
-│   └── ui/                          # Reusable elements (CardSlot.tscn, HealthBar.tscn)
+│ ├── battle/
+│ │ └── Battle.tscn                # Main battle scene
+│ ├── menus/
+│ │ ├── TitleScreen.tscn           # ← NEW: The title screen we built (with background, title label, menu buttons)
+│ │ ├── DeckBuilder.tscn           # Deck editing UI
+│ │ └── InventoryUI.tscn           # Inventory viewing/using UI
+│ ├── overworld/
+│ │ └── Map.tscn                   # Node-based map with encounters
+│ └── ui/                          # Reusable elements (CardSlot.tscn, HealthBar.tscn)
 ├── scripts/
-│   ├── autoload/
-│   │   ├── Global.gd                # Constants, signals
-│   │   ├── GameState.gd             # Current player state (HP, gold, story progress)
-│   │   └── SaveLoad.gd              # JSON save/load for decks/inventory/progress
-│   ├── cards/
-│   │   ├── Card.gd                  # Base card class/resource
-│   │   ├── Deck.gd                  # Deck management
-│   │   └── CardDatabase.gd          # Load cards from JSON/CSV
-│   ├── combat/
-│   │   ├── BattleManager.gd         # Turns, resolution
-│   │   ├── PlayerCombat.gd          # Player actions
-│   │   └── EnemyAI.gd               # AI decisions
-│   ├── inventory/
-│   │   ├── Inventory.gd             # Item list, add/remove/use
-│   │   └── Item.gd                  # Base item class/resource
-│   ├── waifu/
-│   │   ├── Waifu.gd                 # Base waifu class (affection, events, buffs)
-│   │   └── WaifuManager.gd          # Affection levels, gifting, select 3 for buffs (check conditions)
-│   └── utils/                       # Helpers (MathUtils.gd)
-├── tests/                           # gdUnit4 unit tests
+│ ├── autoload/
+│ │ ├── Global.gd                  # Constants, signals
+│ │ ├── GameState.gd               # Current player state (HP, gold, story progress)
+│ │ ├── SaveLoad.gd                # JSON save/load for decks/inventory/progress
+│ │ └── FontScaler.gd              # ← NEW: Global font size scaling autoload (responsive UI)
+│ ├── cards/
+│ │ ├── Card.gd                    # Base card class/resource
+│ │ ├── Deck.gd                    # Deck management
+│ │ └── CardDatabase.gd            # Load cards from JSON/CSV
+│ ├── combat/
+│ │ ├── BattleManager.gd           # Turns, resolution
+│ │ ├── PlayerCombat.gd            # Player actions
+│ │ └── EnemyAI.gd                 # AI decisions
+│ ├── inventory/
+│ │ ├── Inventory.gd               # Item list, add/remove/use
+│ │ └── Item.gd                    # Base item class/resource
+│ ├── waifu/
+│ │ ├── Waifu.gd                   # Base waifu class (affection, events, buffs)
+│ │ └── WaifuManager.gd            # Affection levels, gifting, select 3 for buffs
+│ └── utils/                       # Helpers (MathUtils.gd)
+├── tests/                         # gdUnit4 unit tests
 ├── docs/
-│   └── project-bible.md             # The anchor file
-├── project.godot                    # Godot project file
-└── README.md                        # Repo overview
+│ └── project-bible.md             # The anchor file
+├── project.godot                  # Godot project file (autoload entry added for FontScaler)
+└── README.md                      # Repo overview

@@ -1,9 +1,7 @@
 This is a long-term Godot 4.6 project across multiple sessions. Treat the info below as the single source of truth.
-
 Project: Adult Waifu Card Battler
 Engine: Godot 4.6 (locked)
 Main Goals: Turn-based card battler with adult story, waifu romance, branching paths to demon invasion ending
-
 Current Big 3 (do not deviate unless I explicitly say to change them):
 1. Project Bible (key summary – full at https://raw.githubusercontent.com/rekore/waifu-card-game/refs/heads/Main/Project-Bible):
    - Genre: Adult turn-based card battler with mature themes (violence, assassinations)
@@ -11,23 +9,20 @@ Current Big 3 (do not deviate unless I explicitly say to change them):
    - Turns: Player first then resolve, enemy then resolve
    - Mana: Resets to 3 per player turn (moddable)
    - Story: Branching via Dialogic, factions, multiple endings (demon invasion climax)
-   - UI: No hardcoded positions — anchors/containers/percent sizing only
+   - UI: No hardcoded positions — use anchors/containers/percent sizing only. **Default to container-based scaling (nested HBoxContainer/VBoxContainer with spacer Controls using Fill + Expand size flags and Stretch Ratio for proportional widths/heights, centering via equal-ratio spacers) for all layouts where possible; prefer this over direct anchors/offsets for positioning/sizing to maximize responsiveness and avoid inspector pixel confusion.**
    - Paths: Always res://
    - Save: JSON for decks/inventory/story flags/factions
-
-2. Folder Structure (current):  
-   https://raw.githubusercontent.com/rekore/waifu-card-game/refs/heads/Main/file-structure 
-   
-
+   - Entire game can be interacted with only mouse input
+2. Folder Structure (current):
+   https://raw.githubusercontent.com/rekore/waifu-card-game/refs/heads/Main/file-structure
+  
 3. Key Rules / Conventions (always follow):
-   - No hardcoded UI positions — use anchors/containers/percent sizing
+   - No hardcoded UI positions or pixel values — use anchors/containers/percent sizing only
+   - **UI layout preference (default method)**: Build responsive UIs primarily with containers (VBoxContainer/HBoxContainer/MarginContainer/CenterContainer etc.) + spacer nodes (empty Control with Fill + Expand and Stretch Ratio) for centering and proportional sizing. Use anchors only for full-screen elements (e.g. backgrounds) or when containers alone cannot achieve the exact result. This ensures fluid scaling across resolutions without derived pixel edits in inspector.
    - All paths start with res://
    - Turns: player first then resolve, enemy then resolve
    - Mana resets to 3 each player turn (unless modified)
    - Save/load uses JSON for everything (decks, inventory, story flags, etc.)
    - Adult themes via Dialogic only; keep separate from mechanics
-
-
-Today's task: [your actual question/task here]
-
+Today's task: [your new task here]
 Proceed using only the context above.
