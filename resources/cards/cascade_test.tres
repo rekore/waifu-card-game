@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bgn2jekiymk4j"]
+
+[ext_resource type="Texture2D" uid="uid://dqift1ykd3udf" path="res://assets/art/cards/cardarttest.png" id="1_a1o06"]
+[ext_resource type="Script" uid="uid://dukter80o0kdb" path="res://scripts/cards/Card.gd" id="1_m130t"]
+
+[resource]
+script = ExtResource("1_m130t")
+id = "cascde_test"
+card_name = "cascade test"
+art = ExtResource("1_a1o06")
+mana_cost = 0
+cascade_cost = 3
+cascade_gain = 0
+damage = 10
+metadata/_custom_type_script = "uid://dukter80o0kdb"
