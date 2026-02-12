@@ -1,13 +1,14 @@
 GAME OVERVIEW & VISION
-- Genre & Style: Roguelike deckbuilder RPG with persistent progression across finite themed dungeons. Short, replayable runs emphasize experimentation, sequencing depth, and multi-element hybrid synergies.
+- Genre & Style: Roguelike deckbuilder RPG with persistent meta progression (relics/gear, waifu choices, relationship/affection levels) across finite, instanced themed dungeons. Short, replayable runs emphasize experimentation, sequencing depth, and multi-element hybrid synergies. Campaign story advances via successful runs/chapters.
 - Core Loop:
-  1. Enter a themed dungeon (25–35 nodes).
-  2. Navigate map → fight enemies → gain rewards (cards, gold, relics).
-  3. Use Cascade Meter to chain ramps, pivot elements (Shift/Transmute/Dual), and unleash Finishers.
-  4. Die or win → meta progression (deck thins/adds, relics, gold spent in hub).
+  1. In Meta Hub: Select Hero/Starter Deck, equip Meta Relics/Gear, choose 1-3 Waifus (apply affection-based starting bonuses).
+  2. Enter instanced dungeon run (25–35 nodes, themed to current campaign chapter).
+  3. Navigate map → fight enemies → gain run-only rewards (cards, gold, run relics).
+  4. Use Cascade Meter to chain ramps, pivot elements (Shift/Transmute/Dual), and unleash Finishers.
+  5. Die or win → return to Meta Hub (spend gold, upgrade relationships/gear, advance story via Dialogic scenes).
 - Win/Loss Conditions:
-  - Run Win: Defeat the final Act 3 boss of the dungeon.
-  - Run Loss: Player HP ≤ 0 (permadeath: lose 30% gold + run-only cards; deck/relics persist).
+  - Run Win: Defeat the final Act 3 boss of the dungeon → story progress, affection boosts, unlocks.
+  - Run Loss: Player HP ≤ 0 (lose 30% gold; deck resets automatically; limited retries per chapter).
   - Combat Win: All enemies HP ≤ 0.
   - Combat Loss: Player HP ≤ 0 (rare mid-run escape relics possible).
 - Player Experience Pillars:
@@ -18,28 +19,28 @@ GAME OVERVIEW & VISION
 - Run Length & Pacing: ~60 min total. Fights: 3–4 min (8–20 turns). No Cascade decay extends viable banking, balanced by enemy drains and point caps.
 
 CORE STATS & RESOURCES
-- HP: Player starts 80 (+relic bonuses). No natural regen outside cards/effects.
+- HP: Player starts 80 (+meta relic/waifu bonuses). No natural regen outside cards/effects.
 - Energy: +3 at turn start (meta upgrades to 7 max). Regenerates fully each turn. Spent on cards only.
 - Hand: Draw 5 at turn start (max hand size 10). Excess draw discards randomly.
-- Draw/Discard/Exhaust Piles: Standard reshuffle when draw empty. Run-only cards exhaust (removed post-run). Keyword "Exhaust": Card removed from deck after play (for the run).
-- Block: Temporary HP buffer. Decays fully at end of player turn (unless relic/effect prevents).
+- Draw/Discard/Exhaust Piles: Standard reshuffle when draw empty. All acquired cards are run-only and exhaust/remove post-run. Keyword "Exhaust": Card removed from deck after play (for the run).
+- Block: Temporary HP buffer. Decays fully at the start of the player's next turn (unless relic/effect prevents).
 - Cascade Meter:
   - Current Element (Fire/Frost/Storm/Stone/Void, or Neutral at 0).
   - Points: 0–7 (visual: 7 pips/orb glow).
-  - Starts at 0 Neutral each combat.
+  - Starts at 0 Neutral each combat (+ waifu/affection bonuses, e.g., +1–3 pts in specific element).
   - No end-of-turn decay → bank indefinitely for experimentation.
   - Gain: +1 per Chain (cap 7).
   - Spend: Via Transmute/Shift/Dual/Finisher.
   - Reset: Finisher consumes all → back to 0 Neutral.
-- Deck Limits: Non-Legendary cards max 4 copies. Legendary cards max 1 copy per deck.
+- Deck Limits: Non-Legendary cards max 4 copies. Legendary cards max 1 copy per deck. Deck resets to Hero starter each run; no persistent growth.
 
 COMBAT FLOW (STEP-BY-STEP)
 1. Combat Start:
-   - Player HP full (carryover from prior fights if relic allows).
-   - Cascade: 0 Neutral.
-   - Draw 5 cards.
+   - Player HP full (+ meta/waifu bonuses).
+   - Cascade: 0 Neutral (+ waifu bonuses).
+   - Draw 5 cards from starter deck + run additions.
    - Gain 3 Energy.
-   - Enemy intents preview (next 2 turns visible).
+   - Enemy intents preview (only the next enemy action visible).
 2. Player Turn:
    - Play any number of cards (energy permitting).
    - Sequence matters: Effects resolve immediately (e.g., Draw/Search mid-turn).
@@ -47,7 +48,7 @@ COMBAT FLOW (STEP-BY-STEP)
    - Keywords: Exhaust triggers post-play.
 3. End Player Turn:
    - Discard remaining hand.
-   - Block → 0 (unless prevented).
+   - Block persists through enemy turn(s).
    - No Cascade decay.
    - Apply player statuses (Regen heals, Poison dmg).
 4. Enemy Turn(s):
@@ -55,7 +56,9 @@ COMBAT FLOW (STEP-BY-STEP)
    - Resolve intents (damage, buffs, debuffs).
    - Apply enemy statuses.
    - Some enemies: "Cascade Drain X if player ≥L5" or "Echo last player element (apply minor Burn/Chill)".
-5. Next Turn: Player draws 5 (or remaining if <5), +3 Energy, repeat.
+5. Next Turn: 
+   - Block decays to 0 (unless prevented).
+   - Player draws 5 (or remaining if <5), +3 Energy, repeat.
 6. Combat End: Rewards screen (gold, run-relics, heal/upgrade chances, boss packs).
 
 ELEMENTS & SYNERGY WHEEL
@@ -89,10 +92,10 @@ Offense:
 - Chill: -1 Energy at next turn start (stacks reduce more; min 0)
 - Corrode: +25% Vulnerable potency per stack (multiplicative with Vuln stacks)
 - Crumble: -1 max HP/turn (permanent until combat end; rare)
+- Strength: +25% dmg dealt (additive stacks; rare player source)
 
 Defense:
-- Block: Absorbs dmg (additive; decays EOT unless prevented)
-- Strength: +25% dmg dealt (additive; rare player source)
+- Block: Absorbs dmg (additive; decays at start of next player turn unless prevented)
 - Dexterity: +25% Block gained from cards (additive)
 - Ward: +50% Block this turn only (instant, non-stacking)
 
@@ -107,6 +110,18 @@ Control:
 Sustain:
 - Regen: Heal X/turn (additive; ticks at EOT)
 
+CARD KEYWORDS & SPECIAL EFFECTS
+- Purpose: Rare card effects (often on Legendary/Power cards) that enable combo-breaking plays and god-run potential. Run-only unless meta relic. Balance via high cost/Exhaust, Cascade requirements, enemy counters.
+- Extra Turn: Take another full player turn immediately (fresh draw, new Energy). Cost: 0E + Exhaust + consume 6 Cascade pts. (Enemy may gain a turn after; rare Legendary.)
+- Echo: Next card played this turn is duplicated (played twice, full effects). Cost: 1E + 2 Cascade pts. (No stacking on same card; e.g., Echo a Shift for double pivot.)
+- Innate: Card starts every combat in hand (ignores draw). Max 1–2 per deck.
+- Retain: Card does not discard at turn end (stays in hand for next turn).
+- Play X Times: Play this card X more times this turn (e.g., "Play 3 times"). +1 Cascade per extra play.
+- Draw X: Draw X cards (excess discards).
+- Zero Cost: This card (and next?) costs 0 Energy this turn or combat.
+- Interactions: Echo + Finisher = double burst (reset after first); Extra Turn preserves Cascade bank; some enemies counter (e.g., "Anti-Echo: Skip enemy turn" or "Block Extra Turn").
+- Enemy Versions: Some bosses/elites gain "Extra Enemy Turn" or "Echo Intent" (repeat next action).
+
 CASCADE ACTIONS – DETAILED LOGIC
 - Chain: Must match current element. Effect × mult → +1 pt.
 - Dual (Chain variant): Match → normal Chain. Optional: Spend exactly 2 pts → swap to fixed new element + bonus burst/utility.
@@ -116,7 +131,7 @@ CASCADE ACTIONS – DETAILED LOGIC
 
 ENEMY & FIGHT DESIGN
 - Scaling: Normal ~50 HP, Elite ~120, Boss 200+ (phases at 50%/25%).
-- Intents: 2-turn preview icons + text (e.g., "20 dmg + Poison 2", "Gain Strength 3", "Drain 3 Cascade pts if ≥L4").
+- Intents: 1-turn preview icons + text (e.g., "20 dmg + Poison 2", "Gain Strength 3", "Drain 3 Cascade pts if ≥L4").
 - AI Priorities: Target lowest Block first. Echo mechanic: Last player element → apply minor version.
 - Special: Some elites/bosses "Punish bank" (extra dmg if Cascade ≥5).
 
