@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://ch25jhp74kbhr"]
+
+[ext_resource type="Texture2D" uid="uid://dqift1ykd3udf" path="res://assets/art/cards/cardarttest.png" id="1_788ix"]
+[ext_resource type="Script" uid="uid://dukter80o0kdb" path="res://scripts/cards/Card.gd" id="1_s3w8g"]
+
+[resource]
+script = ExtResource("1_s3w8g")
+id = "fire_strike_basic"
+card_name = "Fire Strike"
+art = ExtResource("1_788ix")
+mana_cost = 0
+cascade_cost = 1
+cascade_gain = 0
+element = "fire"
+damage = 4
+description = "sdfwsef"
+metadata/_custom_type_script = "uid://dukter80o0kdb"
