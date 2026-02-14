@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://6qfdbyi6jdmw"]
+
+[ext_resource type="Script" uid="uid://c757miwoup1wv" path="res://scenes/cards/CardUI.gd" id="1_4b4kr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rl4ox"]
+bg_color = Color(0.101960786, 0.101960786, 0.18039216, 0)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.92156863, 0.7921569, 0.30588236, 1)
+
+[node name="CardUi" type="Control" unique_id=1565874449]
+custom_minimum_size = Vector2(200, 280)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_4b4kr")
+
+[node name="Art" type="TextureRect" parent="." unique_id=1507979378]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.65
+expand_mode = 1
+stretch_mode = 5
+
+[node name="OuterMargin" type="MarginContainer" parent="." unique_id=1839753450]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardFrame" type="PanelContainer" parent="OuterMargin" unique_id=1915173433]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rl4ox")
+
+[node name="MainStack" type="VBoxContainer" parent="OuterMargin/CardFrame" unique_id=373211103]
+layout_mode = 2
+
+[node name="HeaderOverlay" type="ColorRect" parent="OuterMargin/CardFrame/MainStack" unique_id=983944300]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.34509805, 0.34509805, 0.34509805, 0.5529412)
+
+[node name="Header" type="HBoxContainer" parent="OuterMargin/CardFrame/MainStack/HeaderOverlay" unique_id=98790996]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.34
+
+[node name="NameLabel" type="Label" parent="OuterMargin/CardFrame/MainStack/HeaderOverlay/Header" unique_id=1950005344]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.17
+
+[node name="HeaderSpacer" type="Control" parent="OuterMargin/CardFrame/MainStack/HeaderOverlay/Header" unique_id=2126543799]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.17
+
+[node name="CostLabel" type="Label" parent="OuterMargin/CardFrame/MainStack/HeaderOverlay/Header" unique_id=1316477713]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="CostIcon" type="TextureRect" parent="OuterMargin/CardFrame/MainStack/HeaderOverlay/Header" unique_id=1812923072]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+expand_mode = 4
+stretch_mode = 5
+
+[node name="ArtViewer" type="Control" parent="OuterMargin/CardFrame/MainStack" unique_id=806355483]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="DescriptionOverlay" type="ColorRect" parent="OuterMargin/CardFrame/MainStack" unique_id=610322909]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.99
+color = Color(0.34509805, 0.34509805, 0.34509805, 0.5529412)
+
+[node name="DescMargin" type="MarginContainer" parent="OuterMargin/CardFrame/MainStack/DescriptionOverlay" unique_id=917976236]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.67
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="OuterMargin/CardFrame/MainStack/DescriptionOverlay/DescMargin" unique_id=1838978061]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Your desc here[/center]"
+fit_content = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

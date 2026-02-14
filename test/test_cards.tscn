@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dc88m161xfr80"]
+
+[ext_resource type="PackedScene" uid="uid://6qfdbyi6jdmw" path="res://scenes/cards/CardUI.tscn" id="1_tb1aq"]
+[ext_resource type="Resource" uid="uid://jwaaj1c6aj5h" path="res://resources/cards/defend_basic.tres" id="2_p3f3k"]
+[ext_resource type="Resource" uid="uid://swnm17wxinhb" path="res://resources/cards/strike_basic.tres" id="3_bwl03"]
+[ext_resource type="Resource" uid="uid://ch25jhp74kbhr" path="res://resources/cards/fire_strike_basic.tres" id="4_p3f3k"]
+[ext_resource type="Resource" uid="uid://bgn2jekiymk4j" path="res://resources/cards/cascade_test.tres" id="5_bwl03"]
+
+[node name="TestCards" type="CenterContainer" unique_id=637205775]
+offset_right = 4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=392761462]
+layout_mode = 2
+
+[node name="CardUi" parent="HBoxContainer" unique_id=1565874449 instance=ExtResource("1_tb1aq")]
+layout_mode = 2
+card_data = ExtResource("2_p3f3k")
+
+[node name="CardUi2" parent="HBoxContainer" unique_id=1963890040 instance=ExtResource("1_tb1aq")]
+layout_mode = 2
+card_data = ExtResource("3_bwl03")
+
+[node name="CardUi3" parent="HBoxContainer" unique_id=64049750 instance=ExtResource("1_tb1aq")]
+layout_mode = 2
+card_data = ExtResource("4_p3f3k")
+
+[node name="CardUi4" parent="HBoxContainer" unique_id=500141230 instance=ExtResource("1_tb1aq")]
+layout_mode = 2
+card_data = ExtResource("5_bwl03")

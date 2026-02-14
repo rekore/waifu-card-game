@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://jwaaj1c6aj5h"]
+
+[ext_resource type="Texture2D" uid="uid://dqift1ykd3udf" path="res://assets/art/cards/cardarttest.png" id="1_je1jv"]
+[ext_resource type="Script" uid="uid://dukter80o0kdb" path="res://scripts/cards/Card.gd" id="1_lcrlw"]
+
+[resource]
+script = ExtResource("1_lcrlw")
+id = "defend_basic"
+card_name = "Defend"
+art = ExtResource("1_je1jv")
+cascade_gain = 0
+block = 5
+description = "Gain 5 Block."
+metadata/_custom_type_script = "uid://dukter80o0kdb"

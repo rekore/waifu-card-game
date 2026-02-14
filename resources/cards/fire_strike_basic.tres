@@ -13,5 +13,4 @@ cascade_cost = 1
 cascade_gain = 0
 element = "fire"
 damage = 4
-description = "sdfwsef"
 metadata/_custom_type_script = "uid://dukter80o0kdb"

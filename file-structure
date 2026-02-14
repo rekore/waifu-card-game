@@ -1,47 +1,58 @@
 waifu-card-game/
 ├── addons/
-│   └── dialogic/                  # Full Dialogic addon — many files and subfolders (Core, Editor, Modules, Resources, etc.) — contents ignored per request
+│   └── dialogic/                    # Story/dialogue plugin
 ├── assets/
 │   ├── art/
-│   │   ├── characters/
-│   │   │   └── WaifuTest.png
-│   │   └── ui/
-│   │       ├── MainTheme.tres
-│   │       ├── Button_Hover.png
-│   │       ├── button_normal.png
-│   │       ├── button_pressed.png
-│   │       ├── button_disabled.png
-│   │       ├── button_focus.png
-│   │       └── title_background.png               # (example; actual name may vary slightly if more exist — these are the confirmed UI assets)
-│   └── fonts/
-│       └── Merriweather_48pt_SemiCondensed-Bold.ttf
-├── resources/
-│   └── cards/
-│       ├── cascade_test.tres
-│       └── fire_strike_basic.tres
+│   │   ├── cards/                   # Hand-drawn card images (placeholders for now)
+│   │   ├── maps/                    # Hand-drawn backgrounds for maps/battles
+│   │   ├── characters/              # Pixel sprites for waifus/enemies
+│   │   └── ui/                      # Buttons, frames, icons
+│   │       └── icons/               # ← NEW: Cost icons (mana/cascade)
+│   │           ├── mana_gem.png     # Blue mana gem icon for mana_cost cards
+│   │           └── cascade_orb.png  # Orange/yellow cascade orb for cascade_cost cards
+│   ├── audio/                       # Music, SFX
+│   └── fonts/                       # Custom fonts for UI/cards (your MSDF .ttf files)
+├── resources/                       # Data assets (Resources, JSON, etc.)
+│   └── cards/                       # Individual card .tres files
+│       ├── strike_basic.tres        # Test card: basic attack (mana)
+│       ├── defend_basic.tres        # Test card: basic defense (mana)
+│       ├── fire_chain.tres          # Example cascade builder (mana + gain)
+│       └── ...                      # Add more (fire_finisher.tres, etc.)
 ├── scenes/
 │   ├── battle/
-│   │   ├── BattleTemplate.tscn
-│   │   └── BattleTemplate.gd
-│   ├── cards/
-│   │   └── CardUI.gd
-│   └── menus/
-│       └── TitleScreen.tscn
+│   │   └── Battle.tscn              # Main battle scene (placeholder)
+│   ├── menus/
+│   │   ├── TitleScreen.tscn         # Built: background, title, menu buttons
+│   │   ├── DeckBuilder.tscn         # Deck editing UI (future)
+│   │   └── InventoryUI.tscn         # Inventory viewing/using UI (future)
+│   ├── overworld/
+│   │   └── Map.tscn                 # Node-based map with encounters (future)
+│   └── ui/                          # Reusable elements
+│       ├── CardUI.tscn              # Card visual/interactive prefab (full-bleed art, overlays, dynamic mana/cascade cost icon swap via CostIcon)
+│       └── ...                      # HealthBar.tscn, etc. (future)
 ├── scripts/
-│   └── autoload/
-│       └── FontScaler.gd
-├── test/
-│   ├── test.gd
-│   └── test.tscn
-├── .editorconfig
-├── .gitattributes
-├── .gitignore
-├── AI-template
-├── CardRulesBible
-├── CreationBible
-├── Project-Bible
-├── README
-├── file-structure
-├── icon.svg
-├── icon.svg.import
-└── project.godot
+│   ├── autoload/
+│   │   ├── Global.gd                # Constants, signals
+│   │   ├── GameState.gd             # Current player state (HP, gold, story progress)
+│   │   ├── SaveLoad.gd              # JSON save/load for decks/inventory/progress
+│   │   └── FontScaler.gd            # Global font size scaling autoload (responsive UI)
+│   ├── cards/
+│   │   ├── Card.gd                  # Card Resource (mana_cost, cascade_cost, cascade_gain, element, etc.)
+│   │   ├── CardDatabase.gd          # Loads .tres from resources/cards/; helpers get_card(), get_all_cards()
+│   │   └── Deck.gd                  # Deck management (planned next)
+│   ├── combat/
+│   │   ├── BattleManager.gd         # Turns, resolution (future: cascade meter & chain tracking)
+│   │   ├── PlayerCombat.gd          # Player actions
+│   │   └── EnemyAI.gd               # AI decisions
+│   ├── inventory/
+│   │   ├── Inventory.gd             # Item list, add/remove/use
+│   │   └── Item.gd                  # Base item class/resource
+│   ├── waifu/
+│   │   ├── Waifu.gd                 # Base waifu class (affection, events, buffs)
+│   │   └── WaifuManager.gd          # Affection levels, gifting, select 3 for buffs
+│   └── utils/                       # Helpers (MathUtils.gd, etc.)
+├── tests/                           # gdUnit4 unit tests (future)
+├── docs/
+│   └── project-bible.md             # The anchor file (updated with card cost system)
+├── project.godot                    # Godot project file (add CardDatabase to autoload soon)
+└── README.md                        # Repo overview

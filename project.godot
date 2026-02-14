@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Dialogic="*uid://ds2q0uclmolvu"
 FontScaler="*uid://c5s5usc6enx3o"
+carddb="*uid://b1n1341jvaemj"
 
 [dialogic]
 
