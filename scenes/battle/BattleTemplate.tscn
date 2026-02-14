@@ -1,0 +1,341 @@
+[gd_scene format=3 uid="uid://samvaq44x1d2"]
+
+[ext_resource type="Script" uid="uid://htmucv3jt45c" path="res://scenes/battle/BattleTemplate.gd" id="1_7pdo7"]
+[ext_resource type="Theme" uid="uid://o7few53j10fu" path="res://assets/art/ui/MainTheme.tres" id="1_w7i8f"]
+[ext_resource type="Texture2D" uid="uid://dsfek2xt6vlyj" path="res://assets/art/ui/icons/mana_gem.png" id="2_1ercu"]
+[ext_resource type="Texture2D" uid="uid://c42dub8s6n7fi" path="res://assets/art/ui/icons/cascade_orb.png" id="2_w7i8f"]
+
+[node name="BattleTemplate" type="Control" unique_id=529520571]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_w7i8f")
+script = ExtResource("1_7pdo7")
+
+[node name="Background" type="TextureRect" parent="." unique_id=794223840]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="BattleLayout" type="VBoxContainer" parent="." unique_id=947050522]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="HBoxContainer" parent="BattleLayout" unique_id=1343527781]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TopBarLeft" type="HBoxContainer" parent="BattleLayout/TopBar" unique_id=49511451]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DeckIcon" type="TextureRect" parent="BattleLayout/TopBar/TopBarLeft" unique_id=1557317454]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DeckCounter" type="Label" parent="BattleLayout/TopBar/TopBarLeft" unique_id=1269165300]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "18/30"
+
+[node name="TopBarCenter" type="HBoxContainer" parent="BattleLayout/TopBar" unique_id=864824204]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RoundTimer" type="Label" parent="BattleLayout/TopBar/TopBarCenter" unique_id=1920349037]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2:30"
+horizontal_alignment = 1
+
+[node name="TopBarRight" type="HBoxContainer" parent="BattleLayout/TopBar" unique_id=1588813960]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Battlefield" type="HBoxContainer" parent="BattleLayout" unique_id=892477940]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="PlayerParty" type="VBoxContainer" parent="BattleLayout/Battlefield" unique_id=1204595629]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerHPBar" type="ProgressBar" parent="BattleLayout/Battlefield/PlayerParty" unique_id=1915601096]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="PlayerBuffBar" type="HBoxContainer" parent="BattleLayout/Battlefield/PlayerParty" unique_id=1834446696]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="CascadeMeter" type="HBoxContainer" parent="BattleLayout/Battlefield/PlayerParty" unique_id=2068774342]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="pip0" type="TextureRect" parent="BattleLayout/Battlefield/PlayerParty/CascadeMeter" unique_id=1985316053]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_w7i8f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="pip1" type="TextureRect" parent="BattleLayout/Battlefield/PlayerParty/CascadeMeter" unique_id=440448959]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_w7i8f")
+stretch_mode = 5
+
+[node name="pip2" type="TextureRect" parent="BattleLayout/Battlefield/PlayerParty/CascadeMeter" unique_id=1523947133]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_w7i8f")
+stretch_mode = 5
+
+[node name="pip3" type="TextureRect" parent="BattleLayout/Battlefield/PlayerParty/CascadeMeter" unique_id=46995203]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_w7i8f")
+stretch_mode = 5
+
+[node name="pip4" type="TextureRect" parent="BattleLayout/Battlefield/PlayerParty/CascadeMeter" unique_id=1306237770]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_w7i8f")
+stretch_mode = 5
+
+[node name="pip5" type="TextureRect" parent="BattleLayout/Battlefield/PlayerParty/CascadeMeter" unique_id=210927146]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_w7i8f")
+stretch_mode = 5
+
+[node name="pip6" type="TextureRect" parent="BattleLayout/Battlefield/PlayerParty/CascadeMeter" unique_id=2128247620]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_w7i8f")
+stretch_mode = 5
+
+[node name="PartySpacer" type="Control" parent="BattleLayout/Battlefield/PlayerParty" unique_id=123433335]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="WaifuContainer" type="HBoxContainer" parent="BattleLayout/Battlefield/PlayerParty" unique_id=652990565]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="WaifuVBox" type="VBoxContainer" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer" unique_id=650732781]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer/WaifuVBox" unique_id=86145805]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Sloot
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Waifu1" type="CenterContainer" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer/WaifuVBox" unique_id=1263051818]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Waifu1Portrait" type="TextureRect" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer/WaifuVBox/Waifu1" unique_id=536899443]
+layout_mode = 2
+
+[node name="WaifuVBox2" type="VBoxContainer" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer" unique_id=1494811729]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer/WaifuVBox2" unique_id=329116753]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Sloot
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Waifu2" type="CenterContainer" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer/WaifuVBox2" unique_id=299501831]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Waifu2Portrait" type="TextureRect" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer/WaifuVBox2/Waifu2" unique_id=180720272]
+layout_mode = 2
+
+[node name="WaifuVBox3" type="VBoxContainer" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer" unique_id=644003701]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer/WaifuVBox3" unique_id=987716870]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Sloot
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Waifu3" type="CenterContainer" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer/WaifuVBox3" unique_id=674978118]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Waifu3Portrait" type="TextureRect" parent="BattleLayout/Battlefield/PlayerParty/WaifuContainer/WaifuVBox3/Waifu3" unique_id=117495071]
+layout_mode = 2
+
+[node name="CenterSpacer" type="Control" parent="BattleLayout/Battlefield" unique_id=1904454087]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="EnemySide" type="VBoxContainer" parent="BattleLayout/Battlefield" unique_id=2118099509]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyHPBar" type="ProgressBar" parent="BattleLayout/Battlefield/EnemySide" unique_id=19793631]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="EnemyBuffBar" type="HBoxContainer" parent="BattleLayout/Battlefield/EnemySide" unique_id=74734856]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="EnemyIntent" type="Label" parent="BattleLayout/Battlefield/EnemySide" unique_id=523921407]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HeaderLarge"
+text = "Intent"
+horizontal_alignment = 1
+
+[node name="EnemyContainer" type="HBoxContainer" parent="BattleLayout/Battlefield/EnemySide" unique_id=591941371]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="EnemyVBox" type="VBoxContainer" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer" unique_id=220793130]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyName" type="Label" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer/EnemyVBox" unique_id=275730254]
+layout_mode = 2
+text = "Jeff"
+horizontal_alignment = 1
+
+[node name="Enemy" type="CenterContainer" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer/EnemyVBox" unique_id=1755103765]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EnemyPortrait" type="TextureRect" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer/EnemyVBox/Enemy" unique_id=2084052569]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="EnemyVBox2" type="VBoxContainer" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer" unique_id=1197602701]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyName" type="Label" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer/EnemyVBox2" unique_id=953571615]
+layout_mode = 2
+text = "Jeff"
+horizontal_alignment = 1
+
+[node name="Enemy" type="CenterContainer" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer/EnemyVBox2" unique_id=1373525713]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EnemyPortrait" type="TextureRect" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer/EnemyVBox2/Enemy" unique_id=5505769]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="EnemyVBox3" type="VBoxContainer" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer" unique_id=93405994]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyName" type="Label" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer/EnemyVBox3" unique_id=415660977]
+layout_mode = 2
+text = "Jeff"
+horizontal_alignment = 1
+
+[node name="Enemy" type="CenterContainer" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer/EnemyVBox3" unique_id=1691827772]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EnemyPortrait" type="TextureRect" parent="BattleLayout/Battlefield/EnemySide/EnemyContainer/EnemyVBox3/Enemy" unique_id=737667112]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="PlayerSection" type="VBoxContainer" parent="BattleLayout" unique_id=184381901]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="PlayerBottomBar" type="HBoxContainer" parent="BattleLayout/PlayerSection" unique_id=671333175]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EnergyContainer" type="HBoxContainer" parent="BattleLayout/PlayerSection/PlayerBottomBar" unique_id=1003045432]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="EnergyHBoxContainer" type="HBoxContainer" parent="BattleLayout/PlayerSection/PlayerBottomBar/EnergyContainer" unique_id=434073111]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnergyLabel" type="Label" parent="BattleLayout/PlayerSection/PlayerBottomBar/EnergyContainer/EnergyHBoxContainer" unique_id=866638242]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLarge"
+text = "3/3"
+horizontal_alignment = 1
+
+[node name="EnergyIcon" type="TextureRect" parent="BattleLayout/PlayerSection/PlayerBottomBar/EnergyContainer/EnergyHBoxContainer" unique_id=13380213]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_1ercu")
+stretch_mode = 5
+
+[node name="HandContainer" type="CenterContainer" parent="BattleLayout/PlayerSection/PlayerBottomBar" unique_id=1681049411]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="HandHBox" type="HBoxContainer" parent="BattleLayout/PlayerSection/PlayerBottomBar/HandContainer" unique_id=504814880]
+layout_mode = 2
+alignment = 1
+
+[node name="EndTurnContainer" type="CenterContainer" parent="BattleLayout/PlayerSection/PlayerBottomBar" unique_id=462222129]
+layout_mode = 2
+
+[node name="EndTurnButton" type="Button" parent="BattleLayout/PlayerSection/PlayerBottomBar/EndTurnContainer" unique_id=782851583]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+theme = ExtResource("1_w7i8f")
+text = "End Turn"

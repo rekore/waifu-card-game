@@ -7,13 +7,14 @@ Last updated: February 07, 2026
 - Engine: Godot 4.6 (locked)
 - Platforms: PC (Windows/Linux/Mac) priority, Mobile (Android/iOS) low priority due to TOS concerns
 - Art Style: Pixel sprites for characters and effects, hand-drawn cards and maps, Dialogic for story with hand-drawn backgrounds
-- Core Loop: Explore story-driven map → build/upgrade deck → select up to 3 waifu companions for conditional buffs → enter battle → draw/play cards → resolve turns → win loot/waifus → repeat
+- Core Loop: In Meta Hub select Hero/Starter Deck, equip Meta Relics/Gear, choose up to 3 waifu companions (affection-based starting bonuses) → enter instanced roguelike dungeon run (finite map, nodes, themed to current campaign chapter) → navigate map → battles (Cascade chaining) → run rewards (run-only cards/relics/gold) → run win advances story (Dialogic scene, affection boosts, unlocks) or loss allows retry (limited per chapter) → repeat until chapter clear → campaign progression toward demon invasion.
 - Win Condition (per battle): Reduce enemy HP to 0 before yours hits 0
 - Campaign Goal: The entire story builds toward a massive demon invasion. Player choices, allies, waifu relationships, faction standings, and story decisions determine multiple endings — e.g. "You saved the world but X waifu died", "You became the new ruler at a terrible cost", or the true bad ending where the world is swallowed by the demon invasion.
 - Single-player only
 - Story & Choices: Multiple player choices that alter the story (branching paths via Dialogic)
-- Maps & Dungeons: Many different maps and dungeons with varying lengths to complete and rewards as the player progresses
+- Maps & Dungeons: **Finite, instanced roguelike maps per run** (25–35 nodes, procedurally flavored, varying lengths to complete and rewards as the player progresses through campaign chapters)
 - Factions: Multiple factions vying for power that the player can help or hinder (impacts story, loot, waifu availability, endings)
+- Deck Rule: **Decks reset every run** — start with Hero-specific starter deck (8–12 cards); acquire run-only cards during the run (exhaust/remove post-run); no persistent deck growth across runs or campaign. Permanent player growth via meta relics/gear, waifu affection levels (persistent, provide scaling run bonuses), and story progression (unlocks, faction rep).
 
 ## 2. Key Systems & Status
 
@@ -48,11 +49,12 @@ Last updated: February 07, 2026
   - This strict data-visual separation enables easy card editing (change .tres in inspector), reuse of CardUI everywhere, dynamic loading from database, and clean saves (serialize deck as array of card IDs).
 - Turns: Player goes first then resolve, enemy goes then resolve
 - Mana: Resets to 3 at the start of each player's turn, unless modified by an item or card that round
+- Cascade Meter: Core chaining system (no decay, 0-7 pts, element pivots) – integrate with story enemies (e.g., demons drain Cascade)
 - Naming: PascalCase for classes (CardDatabase), snake_case for variables/functions (draw_card)
 - Signals: Use autoload Signals.gd for global events (card_played, turn_ended, battle_won)
 - Adult Content: Mature themes via Dialogic; keep separate from core mechanics
-- Save System: JSON files for decks/progress/inventory/story choices/faction standings; auto-save after battles
-- Waifu Selection: Max 3 active companions; buffs only apply if conditions met (e.g. affection >5)
+- Save System: JSON files for meta relics, waifu affection levels, progress, unlocks, inventory, story choices, faction standings; auto-save after battles/runs
+- Waifu Selection: Max 3 active companions per run; buffs scale with persistent affection levels (e.g., +pts in element, free actions at higher lv)
 - Story Choices: Branching paths from player decisions; factions affected by help/hinder choices; culminates in demon invasion with multiple endings (world saved but losses, bad ending where demons win)
 - Mobile Support: Planned for Android/iOS but low priority due to TOS concerns; touch input, responsive UI scaling, performance optimization
 - UI Scaling & Positioning: No hardcoded positions or fixed pixel coordinates for UI elements. Use anchors, containers, and percent-based sizing/margins for fully responsive layout across resolutions (PC and mobile prep)
