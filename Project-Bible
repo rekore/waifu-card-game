@@ -1,6 +1,6 @@
 # Project Bible - Adult Waifu Card Battler (Working Title)
 
-Last updated: January 26, 2026
+Last updated: February 07, 2026
 
 ## 1. Game Overview
 - Genre: Adult turn-based card battler where players collect waifu cards and fight AI opponents in a story-driven campaign featuring mature themes like violence and political assassinations.
@@ -16,25 +16,36 @@ Last updated: January 26, 2026
 - Factions: Multiple factions vying for power that the player can help or hinder (impacts story, loot, waifu availability, endings)
 
 ## 2. Key Systems & Status
-| System              | Status     | Main Files                              | Notes / Next Tasks                     |
-|---------------------|------------|-----------------------------------------|----------------------------------------|
-| Deck Building       | Not started| scripts/deck/DeckBuilder.gd             | Core feature – UI for adding/removing cards, save/load decks; integrate with CardDatabase |
-| Card Database       | Not started| scripts/cards/CardDatabase.gd           | Load from JSON/CSV for scalability; categorize cards (attack, defense, special) |
-| Battle Manager      | Not started | scripts/combat/BattleManager.gd         | Turn loop: player first then resolve, enemy then resolve; integrate with Dialogic |
-| Player Combat       | Not started | scripts/combat/PlayerCombat.gd          | Hand management, targeting; deck draw from Deck.gd |
-| Enemy AI            | Not started | scripts/combat/EnemyAI.gd               | Simple random plays → scripted for story bosses |
-| Effects / Status    | Not started | scripts/combat/CombatEffects.gd         | Damage, stun/poison/buffs; visual FX with pixel sprites |
-| Dialogue / Story    | Integrated | addons/dialogic/                        | Use for adult narratives; branching paths from player choices; faction influence |
-| UI / Card Display   | Not started | scenes/ui/CardUI.tscn                   | Hand, board, hover tooltips; hand-drawn card art |
-| Save / Load         | Not started | scripts/utils/SaveLoad.gd               | From day 1: Save decks, progress, unlocks, story choices, faction standings; JSON-based |
-| Map / Exploration   | Not started | scenes/overworld/                       | Many different maps and dungeons with varying lengths and rewards; node-based |
-| Inventory           | Not started | scripts/inventory/Inventory.gd          | For story progress items (artifacts, keys, unlocks); gifting to waifus |
-| Waifu Romance       | Not started | scripts/waifu/WaifuManager.gd           | Affection levels trigger events; gifting (vendors/loot); select up to 3 for buffs (check conditions) |
-| Factions            | Not started | scripts/story/FactionManager.gd (future)| Multiple factions; player can help/hinder; impacts story, loot, waifu availability |
-| Endings / Demon Invasion | Not started | scripts/story/EndingManager.gd (future) | Climax: demon invasion; multiple endings based on choices, allies, waifu survival, faction standings |
+
+| System                  | Status                       | Main Files                                | Notes / Next Tasks                                                                 |
+|-------------------------|------------------------------|-------------------------------------------|------------------------------------------------------------------------------------|
+| Deck Building           | Not started                  | scripts/deck/DeckBuilder.gd               | UI for adding/removing cards, save/load decks; integrate with CardDatabase         |
+| Card Database           | In progress                  | scripts/cards/CardDatabase.gd             | Dynamic loading from .tres files in res://resources/cards/; autoload-ready; get_card(id), get_all_cards() |
+| Card Resource / Data Model | Implemented               | scripts/cards/Card.gd                     | Resource (.tres); exported: id, name, mana_cost, cascade_cost, cascade_gain, element, art/portrait, type, damage/block/draw_cards, description; auto-id generation |
+| UI / Card Display       | Implemented – basic version  | scenes/ui/CardUI.tscn                     | Responsive container-based prefab; full-bleed art background, transparent frame, overlay header/desc with Stretch Ratios; dynamic mana/cascade cost icon+number swap in top-right; hover basics; populated via Card Resource |
+| Battle Manager          | Not started                  | scripts/combat/BattleManager.gd           | Turn loop: player first then resolve, enemy then resolve; integrate with Dialogic; track cascade meter & chain element |
+| Player Combat           | Not started                  | scripts/combat/PlayerCombat.gd            | Hand management, targeting; deck draw from Deck.gd                                 |
+| Enemy AI                | Not started                  | scripts/combat/EnemyAI.gd                 | Simple random plays → scripted for story bosses                                    |
+| Effects / Status        | Not started                  | scripts/combat/CombatEffects.gd           | Damage, stun/poison/buffs; visual FX with pixel sprites                            |
+| Dialogue / Story        | Integrated                   | addons/dialogic/                          | Use for adult narratives; branching paths from player choices; faction influence   |
+| Save / Load             | Not started                  | scripts/utils/SaveLoad.gd                 | From day 1: Save decks, progress, unlocks, story choices, faction standings; JSON-based |
+| Map / Exploration       | Not started                  | scenes/overworld/                         | Many different maps and dungeons with varying lengths and rewards; node-based      |
+| Inventory               | Not started                  | scripts/inventory/Inventory.gd            | For story progress items (artifacts, keys, unlocks); gifting to waifus             |
+| Waifu Romance           | Not started                  | scripts/waifu/WaifuManager.gd             | Affection levels trigger events; gifting (vendors/loot); select up to 3 for buffs (check conditions) |
+| Factions                | Not started                  | scripts/story/FactionManager.gd (future)  | Multiple factions; player can help/hinder; impacts story, loot, waifu availability |
+| Endings / Demon Invasion| Not started                  | scripts/story/EndingManager.gd (future)   | Climax: demon invasion; multiple endings based on choices, allies, waifu survival, faction standings |
 
 ## 3. Key Decisions & Conventions
-- Card data: Use Godot Resources (.tres) for each card (name, art, cost, ATK, DEF, effect script); load dynamically from CardDatabase.gd
+- **Card System Details** (data-driven population):
+  - Cards are implemented as Godot Resources (.tres files in res://resources/cards/), each an instance of Card.gd (extends Resource) with exported properties: id, card_name, mana_cost, cascade_cost, cascade_gain, element ("neutral","fire","water","earth","wind"), art (Texture2D for full-bleed background), portrait (optional), type, damage, block, draw_cards, description.
+  - CardUI.tscn (the visual prefab) has an @export var card_data: Card = null on its root node.
+  - In the Godot editor: Assign a .tres file directly to the Card Data field on any CardUI instance for instant preview/population.
+  - At runtime: Instantiate CardUI scenes (e.g., in hand or deck builder), then set card_ui.card_data = some_card_resource (from CardDatabase.get_card("id") or direct load).
+  - Population logic lives in CardUI.gd's update_display() method (called in _ready()): pulls card_name → NameLabel, art → $Art TextureRect (full-bleed), description → RichTextLabel (with BBCode support).
+  - **Costs**: Exclusive dual system — mana_cost (standard, resets to 3/turn) OR cascade_cost (alternative chain pool). UI swaps top-right CostLabel number + CostIcon texture (mana_gem.png vs cascade_orb.png) based on which is >0.
+  - **Cascade building**: Mana cards (mana_cost >0) add cascade_gain (default 1) to meter on resolve if element matches current chain (tracked in BattleManager). Cascade cards (cascade_cost >0) spend from meter, typically gain=0.
+  - element determines chain matching (per CardRulesBible): matching extends chain and adds gain; mismatch resets chain.
+  - This strict data-visual separation enables easy card editing (change .tres in inspector), reuse of CardUI everywhere, dynamic loading from database, and clean saves (serialize deck as array of card IDs).
 - Turns: Player goes first then resolve, enemy goes then resolve
 - Mana: Resets to 3 at the start of each player's turn, unless modified by an item or card that round
 - Naming: PascalCase for classes (CardDatabase), snake_case for variables/functions (draw_card)
@@ -45,15 +56,18 @@ Last updated: January 26, 2026
 - Story Choices: Branching paths from player decisions; factions affected by help/hinder choices; culminates in demon invasion with multiple endings (world saved but losses, bad ending where demons win)
 - Mobile Support: Planned for Android/iOS but low priority due to TOS concerns; touch input, responsive UI scaling, performance optimization
 - UI Scaling & Positioning: No hardcoded positions or fixed pixel coordinates for UI elements. Use anchors, containers, and percent-based sizing/margins for fully responsive layout across resolutions (PC and mobile prep)
-- Paths in Godot: All paths start with res:// (Godot's virtual root). Example: res://scripts/cards/Card.gd (points to project_folder/scripts/cards/Card.gd)
+- Paths in Godot: All paths start with res:// (Godot's virtual root). Example: res://scripts/cards/Card.gd
 
 ## 4. Known Issues / Tech Debt
-- [ ] No card variety yet – start with 10 test cards in separate .tres files
+- [ ] Only basic test cards created so far (Strike, Defend) – expand to ~10–15 varied test cards with waifu art, mixed mana/cascade types
+- [ ] RichTextLabel vertical expansion / text fitting needs minor tuning (Fit Content + Stretch Ratios already help)
 - [ ] Battle scene layout not final
 - [ ] No save system – progress lost on close
+- [ ] Cascade meter & chain tracking not yet implemented in BattleManager
 
 ## 5. Session Log (add after every work session)
-### [Date] - [Task]
-- Changed/Added: ...
-- Files touched: ...
-- Next: ...
+
+### February 07, 2026 - CardUI cost display finalized (mana vs cascade icons)
+- Changed/Added: Completed dynamic cost display in CardUI.gd (mana_cost vs cascade_cost, icon swap via CostIcon, explicit texture clear to prevent ghosting); added cascade_gain & element exports to Card.gd; mana cards build cascade meter.
+- Files touched: scenes/ui/CardUI.tscn (added CostIcon), scenes/ui/CardUI.gd, scripts/cards/Card.gd, resources/cards/*.tres (migration)
+- Next: Build TestHand.tscn (multiple CardUI instances showing mixed costs), create starter icons (mana_gem, cascade_orb), or begin Deck.gd + starter deck with cascade builders
